@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         doctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, DoctorSignUpActivity.class);
+                Intent i = new Intent(v.getContext(), DoctorSignUpActivity.class);
                 startActivityForResult(i, 0);
             }
         });

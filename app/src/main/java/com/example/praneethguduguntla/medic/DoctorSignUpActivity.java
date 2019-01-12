@@ -31,54 +31,54 @@ public class DoctorSignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_doctor_sign_up);
-//
-//        mAuth = FirebaseAuth.getInstance();
-//        db = FirebaseFirestore.getInstance();
-//
-//        button = (Button) findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                name = ((EditText) findViewById(R.id.name)).getText().toString();
-//                email = ((EditText) findViewById(R.id.emailDocSignup)).getText().toString();
-//                password = ((EditText) findViewById(R.id.password)).getText().toString();
-//                createDoctor(email, password, name);
-//            }
-//        });
-//    }
-//
-//    public void createDoctor(String email, String password, String name){
-//        boolean added = false;
-//        mAuth.createUserWithEmailAndPassword(email, password)
-//                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            // Sign in success, update UI with the signed-in user's information
-//                            Log.d("hello", "signInWithEmail:success");
-//                            FirebaseUser user = mAuth.getCurrentUser();
-//
-//                            Map<String, Object> userData = new HashMap<>();
-//                            userData.put("name", "guy");
-//                            userData.put("email", user.getEmail());
-//                            userData.put("code", "123");
-//
-//                            db.collection("Doctors").document(user.getUid()).set(userData);
-//
-//                        } else {
-//                            // If sign in fails, display a message to the user.
-//                            Log.w("hello", "signInWithEmail:failure", task.getException());
-//                            Toast.makeText(DoctorSignUpActivity.this, "Authentication failed. Try again.",
-//                                    Toast.LENGTH_SHORT).show();
-//
-//                        }
-//                    }
-//                });
+        setContentView(R.layout.activity_doctor_sign_up);
+
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+
+        button = (Button) findViewById(R.id.signUpDoc);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                name = ((EditText) findViewById(R.id.nameDocSignup)).getText().toString();
+                email = ((EditText) findViewById(R.id.emailDocSignup)).getText().toString();
+                password = ((EditText) findViewById(R.id.passwordDocSignup)).getText().toString();
+                createDoctor(email, password, name);
+            }
+        });
+    }
+
+    public void createDoctor(String email, String password, String name){
+        boolean added = false;
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d("hello", "signInWithEmail:success");
+                            FirebaseUser user = mAuth.getCurrentUser();
+
+                            Map<String, Object> userData = new HashMap<>();
+                            userData.put("name", "guy");
+                            userData.put("email", user.getEmail());
+                            userData.put("code", "123");
+
+                            db.collection("Doctors").document(user.getUid()).set(userData);
+
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w("hello", "signInWithEmail:failure", task.getException());
+                            Toast.makeText(DoctorSignUpActivity.this, "Authentication failed. Try again.",
+                                    Toast.LENGTH_SHORT).show();
+
+                        }
+                    }
+                });
 
     }
 
-//    public String generateCode(){
-//        return "123";
-//    }
+    public String generateCode(){
+        return "123";
+    }
 }
