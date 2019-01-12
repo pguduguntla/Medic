@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = ((EditText) findViewById(R.id.email)).getText().toString();
+                String email = ((EditText) findViewById(R.id.emailDocSignup)).getText().toString();
                 String password = ((EditText) findViewById(R.id.password)).getText().toString();
 
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {

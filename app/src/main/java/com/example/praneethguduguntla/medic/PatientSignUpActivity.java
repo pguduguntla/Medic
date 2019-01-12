@@ -39,7 +39,7 @@ public class PatientSignUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 name = ((EditText) findViewById(R.id.name)).getText().toString();
-                email = ((EditText) findViewById(R.id.email)).getText().toString();
+                email = ((EditText) findViewById(R.id.emailDocSignup)).getText().toString();
                 password = ((EditText) findViewById(R.id.password)).getText().toString();
                 code = ((EditText) findViewById(R.id.code)).getText().toString();
                 createPatient(email, password);

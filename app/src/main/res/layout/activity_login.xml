@@ -7,7 +7,7 @@
     tools:context=".LoginActivity">
 
     <EditText
-        android:id="@+id/email"
+        android:id="@+id/emailDocSignup"
         android:layout_width="wrap_content"
         android:layout_height="57dp"
         android:layout_marginStart="8dp"
