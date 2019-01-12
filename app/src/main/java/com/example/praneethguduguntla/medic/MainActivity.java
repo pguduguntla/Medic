@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         patient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), PatientSignUpActivity.class);
+                Intent i = new Intent(v.getContext(), PatientSignUpActivity.class);
                 startActivity(i);
             }
         });
@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         doctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(), DoctorSignUpActivity.class);
-                startActivity(i);
+                Intent i = new Intent(MainActivity.this, DoctorSignUpActivity.class);
+                startActivityForResult(i, 0);
             }
         });
 

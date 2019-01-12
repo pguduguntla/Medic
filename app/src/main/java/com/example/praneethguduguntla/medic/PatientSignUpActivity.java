@@ -50,7 +50,7 @@ public class PatientSignUpActivity extends AppCompatActivity {
     }
 
     public void createPatient(String email, String password){
-        mAuth.signInWithEmailAndPassword(email, password)
+        mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -61,7 +61,7 @@ public class PatientSignUpActivity extends AppCompatActivity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w("hello", "signInWithEmail:failure", task.getException());
-                            Toast.makeText(PatientSignUpActivity.this, "Authentication failed.",
+                            Toast.makeText(PatientSignUpActivity.this, "Authentication failed. Try again.",
                                     Toast.LENGTH_SHORT).show();
 
                         }
