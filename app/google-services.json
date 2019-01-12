@@ -1,0 +1,86 @@
+{
+  "project_info": {
+    "project_number": "901232561192",
+    "firebase_url": "https://medic-eb30a.firebaseio.com",
+    "project_id": "medic-eb30a",
+    "storage_bucket": "medic-eb30a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901232561192:android:068e9bfc0801cfa0",
+        "android_client_info": {
+          "package_name": "com.example.praneethguduguntla.medic"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901232561192-1k3p55pi96h038c7vc20dh32gpgaberu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh3c7vp5ZcIbjMbEa4kLqhEZNNYH9VxzM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901232561192:android:03474fe22bc505c5",
+        "android_client_info": {
+          "package_name": "com.example.rao_a.doctalk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901232561192-4bjd1opj5skcnn0v764jo2rdf0ojlnn2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.rao_a.doctalk",
+            "certificate_hash": "9409de722443d5b35193a684e857bb8d58080352"
+          }
+        },
+        {
+          "client_id": "901232561192-1k3p55pi96h038c7vc20dh32gpgaberu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBh3c7vp5ZcIbjMbEa4kLqhEZNNYH9VxzM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901232561192-1k3p55pi96h038c7vc20dh32gpgaberu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
