@@ -47,7 +47,7 @@
                     android:text="Schedule Your Medications"
                     android:textColor="@color/colorPrimary"
                     android:textSize="45sp"
-                    app:fontFamily="@font/proxima_nova_bold"
+                    android:fontFamily="@font/proxima_nova_bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.176"
@@ -184,6 +184,12 @@
                 android:hint="Enter Medication Name"
                 app:layout_constraintStart_toStartOf="parent"
                 android:paddingTop="27dp"/>
+
+            <Button
+                android:id="@+id/doneButton"
+                android:layout_width="160dp"
+                android:layout_height="44dp"
+                android:text="done" />
 
             <Button
                 android:id="@+id/createRegimen"

@@ -70,12 +70,12 @@ public class NotifcationActivity extends AppCompatActivity {
             }
         });
 
-       editTextTitle = findViewById(R.id.edit_text_title);
+       /*editTextTitle = findViewById(R.id.edit_text_title);
        edit_text_minute = findViewById(R.id.edit_text_minute);
        edit_text_hour = findViewById(R.id.edit_text_hour);
        edit_text_day = findViewById(R.id.edit_text_day);
        edit_text_name = findViewById(R.id.edit_text_name);
-        edit_text_description = findViewById(R.id.edit_text_description);
+        edit_text_description = findViewById(R.id.edit_text_description);*/
        /* Calendar calendar = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {

@@ -45,6 +45,7 @@ public class PatientSchedulingActivity extends AppCompatActivity {
     private CheckBox Sunday;
     private TimePicker time;
     private EditText name;
+    private Button done;
     PendingIntent pendingIntent;
     //    List<Integer> pendingIntents;
     AlarmManager am;
@@ -73,6 +74,15 @@ public class PatientSchedulingActivity extends AppCompatActivity {
 
         db = FirebaseFirestore.getInstance();
         initUser();
+
+        done = (Button) findViewById(R.id.doneButton);
+        done.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), PatientView.class);
+                startActivity(i);
+            }
+        });
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
