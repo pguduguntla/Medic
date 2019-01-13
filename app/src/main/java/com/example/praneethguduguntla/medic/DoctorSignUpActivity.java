@@ -60,9 +60,9 @@ public class DoctorSignUpActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
 
                             Map<String, Object> userData = new HashMap<>();
-                            userData.put("name", "guy");
+                            userData.put("name", DoctorSignUpActivity.this.name);
                             userData.put("email", user.getEmail());
-                            userData.put("code", "123");
+                            userData.put("code", DoctorSignUpActivity.this.generateCode(user));
 
                             db.collection("Doctors").document(user.getUid()).set(userData);
 
@@ -78,7 +78,7 @@ public class DoctorSignUpActivity extends AppCompatActivity {
 
     }
 
-    public String generateCode(){
-        return "123";
+    public String generateCode(FirebaseUser user) {
+        return user.getUid().substring(0,5);
     }
 }
