@@ -146,7 +146,8 @@ public class MessagingActivity extends AppCompatActivity implements RoomListener
                     setUpRoom();
                 } else {
                     // We are a doctor
-                    String name = getIntent().getStringExtra("patientName");
+                    String name = getIntent().getStringExtra("patientUid");
+                    roomName = "observable-" + name;
                     TextView tv = (TextView) findViewById(R.id.nameOfTexter);
                     tv.setText("name");
                     setUpRoom();

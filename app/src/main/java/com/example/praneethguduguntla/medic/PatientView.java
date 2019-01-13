@@ -47,6 +47,9 @@ public class PatientView extends AppCompatActivity {
     private FloatingActionButton fab3;
     private boolean isFABOpen = false;
 
+    public String uid;
+    public boolean isDoctor;
+
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
@@ -56,7 +59,27 @@ public class PatientView extends AppCompatActivity {
 
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+
         fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+
+        db = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+
+
+        tv = (TextView) findViewById(R.id.textView4);
+
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        //Toast.makeText(this, "" + user.getUid(), Toast.LENGTH_SHORT).show();
+        if(getIntent() != null && getIntent().hasExtra("isDoctor")) {
+            uid = getIntent().getStringExtra("uid");
+            isDoctor = true;
+            fab3.hide();
+        } else {
+            isDoctor = false;
+            uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        }
+
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +89,9 @@ public class PatientView extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             Intent i = new Intent(getApplicationContext(), MessagingActivity.class);
+                            if(getIntent() != null && getIntent().hasExtra("isDoctor")) {
+                                i.putExtra("patientUid", uid);
+                            }
                             startActivity(i);
                         }
                     });
@@ -82,15 +108,6 @@ public class PatientView extends AppCompatActivity {
                 }
             }
         });
-        db = FirebaseFirestore.getInstance();
-        mAuth = FirebaseAuth.getInstance();
-
-
-        tv = (TextView) findViewById(R.id.textView4);
-
-
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        Toast.makeText(this, "" + user.getUid(), Toast.LENGTH_SHORT).show();
 
         // lv = (Med) findViewById(R.id.lv);
 
@@ -101,7 +118,7 @@ public class PatientView extends AppCompatActivity {
         todayListNames = new ArrayList<>();
         todayListBool = new ArrayList<>();
 
-        db.collection("Patients").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("Patients").document(uid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -114,7 +131,7 @@ public class PatientView extends AppCompatActivity {
         });
 
 
-        db.collection("Patients").document(user.getUid()).collection("Meds").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("Patients").document(uid).collection("Meds").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
