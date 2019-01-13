@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.praneethguduguntla.medic">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,9 +13,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PatientSignUpActivity"
-            android:theme="@style/MedicTheme">
-
-        </activity>
+            android:theme="@style/MedicTheme" />
         <activity android:name=".MainActivity" />
         <activity android:name=".DoctorSignUpActivity" />
         <activity android:name=".LoginActivity">
@@ -24,11 +24,15 @@
             </intent-filter>
         </activity>
         <activity android:name=".PatientView" />
-        <activity android:name=".PatientSchedulingActivity"></activity>
+        <activity android:name=".PatientSchedulingActivity" />
 
+        <receiver android:name=".AlarmReceiver" />
 
-
-        <receiver android:name=".AlarmReceiver"/>
+        <activity
+            android:name=".YesOrNo"
+            android:label="@string/title_activity_yes_or_no"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".MessagingActivity"></activity>
     </application>
 
 </manifest>
