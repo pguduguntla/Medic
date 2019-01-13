@@ -13,15 +13,17 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/MedicTheme" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".DoctorSignUpActivity" />
-        <activity android:name=".PatientSignUpActivity">
+            android:theme="@style/MedicTheme" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".DoctorSignUpActivity" />
+        <activity android:name=".PatientSignUpActivity">
+
         </activity>
         <activity android:name=".PatientView" />
         <activity android:name=".PatientSchedulingActivity" />
@@ -34,6 +36,7 @@
             android:theme="@style/AppTheme" />
         <activity android:name=".MessagingActivity"
             android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:name=".PatientListActivity" />
     </application>
 
 </manifest>

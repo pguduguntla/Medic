@@ -59,7 +59,7 @@ public class PatientSignUpActivity extends AppCompatActivity {
                 password = ((EditText) findViewById(R.id.password)).getText().toString();
                 code = ((EditText) findViewById(R.id.code)).getText().toString();
                 initDocUID();
-                check();
+//                check();
             }
         });
     }
@@ -93,6 +93,8 @@ public class PatientSignUpActivity extends AppCompatActivity {
                                 }
                             });
 
+                            db.collection("Patients").document(mAuth.getCurrentUser().getUid()).set(patientData);
+
                             authed = true;
                         } else {
                             // If sign in fails, display a message to the user.
@@ -123,9 +125,6 @@ public class PatientSignUpActivity extends AppCompatActivity {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         if(document.getData().get("code").equals(code)){
                             docUID = document.getId();
-                            ArrayList<String> patients = (ArrayList<String>) (document.getData().get("patients"));
-//                            patients.add(mAuth.getCurrentUser().getUid());
-//                            db.collection("Doctors").document(docUID).update("patients", patients);
                             createPatient(email, password);
                             break;
                         }

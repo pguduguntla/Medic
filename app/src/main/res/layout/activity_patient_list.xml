@@ -9,51 +9,76 @@
         tools:context=".PatientListActivity">
 
     <TextView
-            android:id="@+id/WelcomeDoc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:fontFamily="@font/proxima_nova_bold"
-            android:lineSpacingExtra="-10sp"
-            android:text="Welcome,"
-            android:textColor="@color/colorPrimary"
-            android:textSize="45sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/nameDoc"/>
+        android:id="@+id/WelcomeDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:lineSpacingExtra="-10sp"
+        android:text="Welcome,"
+        android:textColor="@color/colorPrimary"
+        android:textSize="45sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-            android:id="@+id/nameDoc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/proxima_nova_bold"
-            android:lineHeight="5dp"
-            android:text="XXX"
-            android:textColor="@color/common_google_signin_btn_text_dark_default"
-            android:textSize="45sp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp" android:layout_marginBottom="36dp"
-            app:layout_constraintBottom_toTopOf="@+id/patientList" android:layout_marginEnd="278dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/WelcomeDoc"/>
+        android:id="@+id/nameDoc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="256dp"
+        android:layout_marginBottom="124dp"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:lineHeight="5dp"
+        android:text="XXX"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/WelcomeDoc" />
+
     <ListView
-            android:layout_width="350dp"
-            android:layout_height="350dp" android:id="@+id/patientList"
-            android:layout_marginTop="36dp"
-            app:layout_constraintTop_toBottomOf="@+id/nameDoc" android:layout_marginEnd="17dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="55dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="17dp">
-    </ListView>
+        android:id="@+id/patientList"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_marginStart="17dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></ListView>
+
     <TextView
-            android:text="Code:"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/code" android:fontFamily="@font/proxima_nova_black"
-            android:textColor="#ffffff" android:textSize="20sp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="16dp" android:layout_marginBottom="118dp"
-            app:layout_constraintBottom_toTopOf="@+id/patientList" android:layout_marginEnd="89dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="31dp"
-            app:layout_constraintStart_toEndOf="@+id/WelcomeDoc"/>
+        android:id="@+id/code"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="305dp"
+        android:layout_marginTop="129dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginBottom="96dp"
+        android:fontFamily="@font/proxima_nova_black"
+        android:text="Code:"
+        android:textColor="#ffffff"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/patientList"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/reloadList"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginBottom="73dp"
+        android:text="R"
+        app:layout_constraintBottom_toTopOf="@+id/code"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/WelcomeDoc"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

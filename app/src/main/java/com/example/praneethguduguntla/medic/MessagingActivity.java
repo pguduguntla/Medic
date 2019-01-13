@@ -138,7 +138,7 @@ public class MessagingActivity extends AppCompatActivity implements RoomListener
         db.collection("Patients").document(user.getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
+                if (task.isSuccessful() && task.getResult().exists()) {
                     // We are a patient
                     roomName = "observable-" + user.getUid();
                     TextView tv = (TextView) findViewById(R.id.nameOfTexter);
@@ -149,7 +149,7 @@ public class MessagingActivity extends AppCompatActivity implements RoomListener
                     String name = getIntent().getStringExtra("patientUid");
                     roomName = "observable-" + name;
                     TextView tv = (TextView) findViewById(R.id.nameOfTexter);
-                    tv.setText("name");
+                    tv.setText(getIntent().getStringExtra("patientName"));
                     setUpRoom();
                 }
             }

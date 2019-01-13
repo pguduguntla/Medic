@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -45,7 +46,10 @@ public class PatientView extends AppCompatActivity {
     private FloatingActionButton fab1;
     private FloatingActionButton fab2;
     private FloatingActionButton fab3;
+    private Button reload;
     private boolean isFABOpen = false;
+
+    private String mName;
 
     public String uid;
     public boolean isDoctor;
@@ -56,6 +60,9 @@ public class PatientView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_view);
+
+        reload = (Button) findViewById(R.id.reload);
+
 
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
@@ -71,8 +78,11 @@ public class PatientView extends AppCompatActivity {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         //Toast.makeText(this, "" + user.getUid(), Toast.LENGTH_SHORT).show();
-        if(getIntent() != null && getIntent().hasExtra("isDoctor")) {
+        if (getIntent() != null && getIntent().hasExtra("isDoctor")) {
             uid = getIntent().getStringExtra("uid");
+            Log.e("---->", uid);
+            TextView textView = (TextView)findViewById(R.id.textView3);
+            textView.setText("Patient:");
             isDoctor = true;
             fab3.hide();
         } else {
@@ -80,17 +90,30 @@ public class PatientView extends AppCompatActivity {
             uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         }
 
+        reload.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), PatientView.class);
+                if(getIntent() != null && getIntent().hasExtra("isDoctor")) {
+                    i.putExtra("isDoctor", true);
+                    i.putExtra("uid", uid);
+                }
+                startActivity(i);
+            }
+        });
+
         fab1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!isFABOpen){
+                if (!isFABOpen) {
                     showFABMenu();
                     fab2.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             Intent i = new Intent(getApplicationContext(), MessagingActivity.class);
-                            if(getIntent() != null && getIntent().hasExtra("isDoctor")) {
+                            if (getIntent() != null && getIntent().hasExtra("isDoctor")) {
                                 i.putExtra("patientUid", uid);
+                                i.putExtra("patientName", mName);
                             }
                             startActivity(i);
                         }
@@ -103,7 +126,7 @@ public class PatientView extends AppCompatActivity {
                             startActivity(i);
                         }
                     });
-                }else{
+                } else {
                     closeFABMenu();
                 }
             }
@@ -125,7 +148,7 @@ public class PatientView extends AppCompatActivity {
                     DocumentSnapshot snapshot = task.getResult();
                     String name = snapshot.get("Name").toString();
                     tv.setText(name);
-
+                    mName = name;
                 }
             }
         });
@@ -254,7 +277,7 @@ public class PatientView extends AppCompatActivity {
                         int currMonth = c.get(Calendar.MONTH);
                         int currDay = c.get(Calendar.DAY_OF_MONTH);
 
-                        if (currMonth+1 != Integer.parseInt(month)) {
+                        if (currMonth + 1 != Integer.parseInt(month)) {
                             todayListBool.add(false);
                             continue;
                         }
@@ -265,9 +288,6 @@ public class PatientView extends AppCompatActivity {
                         }
 
                         //Toast.makeText(getApplicationContext(), history.toString(), Toast.LENGTH_LONG).show();
-
-
-
 
 
                         if (hasTaken.equals("1")) {
@@ -314,15 +334,15 @@ public class PatientView extends AppCompatActivity {
 
     }
 
-    private void showFABMenu(){
-        isFABOpen=true;
+    private void showFABMenu() {
+        isFABOpen = true;
         fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
         fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
 
     }
 
-    private void closeFABMenu(){
-        isFABOpen=false;
+    private void closeFABMenu() {
+        isFABOpen = false;
         fab2.animate().translationY(0);
         fab3.animate().translationY(0);
     }

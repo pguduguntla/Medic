@@ -59,12 +59,14 @@ public class LoginActivity extends AppCompatActivity {
                             db.collection("Patients").document(mAuth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                                 @Override
                                 public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                    if(task.isSuccessful()) {
+                                    if(task.isSuccessful() && task.getResult().exists()) {
+                                        Log.e("--->", "Patient");
                                         Intent i = new Intent(LoginActivity.this, PatientView.class);
-                                        startActivityForResult(i, 0);
+                                        startActivity(i);
                                     } else {
+                                        Log.e("--->", "Doctor");
                                         Intent i = new Intent(LoginActivity.this, PatientListActivity.class);
-                                        startActivityForResult(i, 0);
+                                        startActivity(i);
                                     }
                                 }
                             });
