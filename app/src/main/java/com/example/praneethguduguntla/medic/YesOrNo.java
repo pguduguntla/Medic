@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,6 +31,7 @@ public class YesOrNo extends AppCompatActivity {
     private Button no;
     private FirebaseFirestore db;
     private FirebaseUser user;
+    private TextView currentText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +39,32 @@ public class YesOrNo extends AppCompatActivity {
         setContentView(R.layout.activity_yes_or_no);
         yes = (Button) findViewById(R.id.ThisButton);
         no = (Button) findViewById(R.id.ThisButton2);
+        currentText = (TextView) findViewById(R.id.MedicineText);
         db = FirebaseFirestore.getInstance();
+
+        //int ind = getIntent().getIntExtra("index", -1);
+        //currentText.setText("Did you take " + db.collection);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        Log.d("HEY", "HI");
+        db.collection("Patients").document(user.getUid()).collection("Meds").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                if (task.isSuccessful()) {
+                    int ind = getIntent().getIntExtra("index", -1);
+                    List<DocumentSnapshot> docs = task.getResult().getDocuments();
+                    for (DocumentSnapshot doc : docs) {
+                        Log.d("Hoping", "Well: " + doc.get("Index"));
+                        //Math.toIntExact((long)(task.getResult().get("Total")))
+                        if (Math.toIntExact((long) doc.get("Index")) == ind) {
+                            String name = doc.get("Name").toString();
+                            currentText.setText("Did you take " + name + "?");
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+            //currentText;
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
