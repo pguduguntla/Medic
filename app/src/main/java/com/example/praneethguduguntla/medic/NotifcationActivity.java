@@ -115,25 +115,25 @@ public class NotifcationActivity extends AppCompatActivity {
 
     }
         public void createNotification(int hour_of_day, int minute, int second, int day_of_week, String title, String description, int repeat){
-          Calendar calendar = null;
+                Calendar calendar = null;
 
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-              calendar = Calendar.getInstance();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                    calendar = Calendar.getInstance();
 
 
-              calendar.set(Calendar.HOUR_OF_DAY, hour_of_day);
-              calendar.set(Calendar.MINUTE, minute);
-              calendar.set(Calendar.SECOND, second);
-              calendar.set(Calendar.DAY_OF_WEEK, day_of_week);
-              AlarmReceiver.changeVariables(title, description);
-              intent1 = new Intent(NotifcationActivity.this, AlarmReceiver.class);
-              pendingIntent = PendingIntent.getBroadcast(NotifcationActivity.this, pIntentCounter, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
-              pendingIntents.add(pIntentCounter);
-              pIntentCounter++;
-              am = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
-              am.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), repeat, pendingIntent);
+                    calendar.set(Calendar.HOUR_OF_DAY, hour_of_day);
+                    calendar.set(Calendar.MINUTE, minute);
+                    calendar.set(Calendar.SECOND, second);
+                    calendar.set(Calendar.DAY_OF_WEEK, day_of_week);
+                    AlarmReceiver.changeVariables(title, description);
+                    intent1 = new Intent(NotifcationActivity.this, AlarmReceiver.class);
+                    pendingIntent = PendingIntent.getBroadcast(NotifcationActivity.this, pIntentCounter, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+                    pendingIntents.add(pIntentCounter);
+                    pIntentCounter++;
+                    am = (AlarmManager) this.getSystemService(this.ALARM_SERVICE);
+                    am.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), repeat, pendingIntent);
 
-          }
+                }
       }
 
 
