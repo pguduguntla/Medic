@@ -116,10 +116,11 @@ public class PatientSchedulingActivity extends AppCompatActivity {
                             docData.put("Name", name);
                             docData.put("Days", days);
                             docData.put("Index", index);
+                            docData.put("History", new ArrayList<>());
 
                             Log.d("Testing", user.getUid() + "");
                             db.collection("Patients").document(user.getUid()).collection("Meds").add(docData);
-                            createNotification(hour, minute, 0, days, Title, desc, 60000);
+                            createNotification(hour, minute, 0, days, Title, desc, (int) (AlarmManager.INTERVAL_DAY*7));
                         }
                     }
                 });

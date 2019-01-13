@@ -11,9 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".PatientSignUpActivity"
-            android:theme="@style/MedicTheme">
-
-        </activity>
+            android:theme="@style/MedicTheme"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".DoctorSignUpActivity" />
         <activity android:name=".LoginActivity">
@@ -24,11 +22,14 @@
             </intent-filter>
         </activity>
         <activity android:name=".PatientView" />
-        <activity android:name=".PatientSchedulingActivity"></activity>
+        <activity android:name=".PatientSchedulingActivity" />
 
+        <receiver android:name=".AlarmReceiver" />
 
-
-        <receiver android:name=".AlarmReceiver"/>
+        <activity
+            android:name=".YesOrNo"
+            android:label="@string/title_activity_yes_or_no"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>
