@@ -29,12 +29,14 @@ public class AlarmReceiver extends BroadcastReceiver {
     static String description;
 
     int index;
+    public Context mContext;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         // TODO Auto-generated method stub
 
         index = -1;
+        mContext = context;
         createNotificationChannels(context);
         long when = System.currentTimeMillis();
         NotificationManager notificationManager = (NotificationManager) context
@@ -46,35 +48,38 @@ public class AlarmReceiver extends BroadcastReceiver {
         FirebaseUser user = auth.getCurrentUser();
         String uid = user.getUid();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        Log.d("HERENOT", "WHAt is " + index);
         db.collection("Patients").document(uid).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                index = (int)(task.getResult().get("Total")) - 1;
+                index = Math.toIntExact((long)(task.getResult().get("Total"))) - 1;
+                Intent notificationIntent = new Intent(mContext, YesOrNo.class);
+                notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                notificationIntent.putExtra("index", index);
 
+                PendingIntent pendingIntent = PendingIntent.getActivity(mContext, 0,
+                        notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+                Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+                NotificationManager notificationManager = (NotificationManager) mContext
+                        .getSystemService(Context.NOTIFICATION_SERVICE);
+
+                NotificationCompat.Builder mNotifyBuilder = new NotificationCompat.Builder(mContext, CHANNEL_1_ID)
+                        .setSmallIcon(R.drawable.ic_launcher_foreground)
+                        .setContentTitle(contentTitle)
+                        .setContentText(description).setSound(alarmSound)
+                        .setAutoCancel(true).setWhen(System.currentTimeMillis())
+                        .setContentIntent(pendingIntent)
+                        .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
+                notificationManager.notify(1, mNotifyBuilder.build());
+                Log.d("NOTIFY", "ITS GOOD!");
             }
         });
 
-        while(index == -1);
-
-        Intent notificationIntent = new Intent(context, PatientSchedulingActivity.class);
-        notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        notificationIntent.putExtra("index", index);
-
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0,
-                notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
 
 
-        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-
-        NotificationCompat.Builder mNotifyBuilder = new NotificationCompat.Builder(context, CHANNEL_1_ID)
-                .setSmallIcon(R.drawable.ic_launcher_foreground)
-                .setContentTitle(contentTitle)
-                .setContentText(description).setSound(alarmSound)
-                .setAutoCancel(true).setWhen(when)
-                .setContentIntent(pendingIntent)
-                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000});
-        notificationManager.notify(1, mNotifyBuilder.build());
-        Log.d("NOTIFY", "ITS GOOD!");
     }
     public static void changeVariables(String one, String two){
         contentTitle = one;
