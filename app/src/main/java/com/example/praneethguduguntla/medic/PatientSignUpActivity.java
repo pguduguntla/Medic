@@ -99,7 +99,7 @@ public class PatientSignUpActivity extends AppCompatActivity {
                                     db.collection("Doctors").document(docUID).update("patients", patients);
 
 //                                    db.collection("Patients").document(FirebaseAuth.getInstance().getCurrentUser().getUid()).set(patientData);
-                                    Intent i = new Intent(PatientSignUpActivity.this, PatientSchedulingActivity.class);
+                                    Intent i = new Intent(PatientSignUpActivity.this, PatientView.class);
                                     startActivityForResult(i, 0);
                                 }
                             });

@@ -50,11 +50,9 @@ public class MessageAdapter extends BaseAdapter {
             holder.messageBody.setText(message.getText());
         } else { // this message was sent by someone else so let's create an advanced chat bubble on the left
             convertView = messageInflater.inflate(R.layout.other_message, null);
-            holder.name = (TextView) convertView.findViewById(R.id.name);
             holder.messageBody = (TextView) convertView.findViewById(R.id.message_body);
             convertView.setTag(holder);
 
-            holder.name.setText(message.getData().get(0));
             holder.messageBody.setText(message.getText());
         }
 
@@ -63,6 +61,5 @@ public class MessageAdapter extends BaseAdapter {
 }
 
 class MessageViewHolder {
-    public TextView name;
     public TextView messageBody;
 }

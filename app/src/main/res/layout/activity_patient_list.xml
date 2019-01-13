@@ -54,9 +54,9 @@
         android:id="@+id/code"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="305dp"
+        android:layout_marginStart="252dp"
         android:layout_marginTop="129dp"
-        android:layout_marginEnd="52dp"
+        android:layout_marginEnd="105dp"
         android:layout_marginBottom="96dp"
         android:fontFamily="@font/proxima_nova_black"
         android:text="Code:"
@@ -65,7 +65,8 @@
         app:layout_constraintBottom_toTopOf="@+id/patientList"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/reloadList"

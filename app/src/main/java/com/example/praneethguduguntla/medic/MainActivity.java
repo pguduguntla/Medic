@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser() != null) {
+        /*if(auth.getCurrentUser() != null) {
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             db.collection("Patients").document(auth.getCurrentUser().getUid()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                 @Override
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        }
+        }*/
 
         patient = (Button) findViewById(R.id.patient);
         doctor = (Button) findViewById(R.id.doctor);
