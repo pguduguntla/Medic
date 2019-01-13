@@ -4,14 +4,68 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     tools:context=".PatientView">
 
     <TextView
-        android:id="@+id/font"
-        android:layout_width="201dp"
-        android:layout_height="59dp"
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:lineSpacingExtra="-10sp"
         android:text="Welcome,"
-        android:textSize="30sp"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="44dp" />
+        android:textColor="@color/colorPrimary"
+        android:textSize="45sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.205"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:lineHeight="5dp"
+        android:text="XXX"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="45sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ScrollView
+        android:layout_width="395dp"
+        android:layout_height="464dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.68">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <ListView
+        android:layout_width="373dp"
+        android:layout_height="63dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="210dp" />
+
 </android.support.constraint.ConstraintLayout>
