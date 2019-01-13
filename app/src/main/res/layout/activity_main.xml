@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <Button
+        style="@style/myColoredButton"
         android:id="@+id/patient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -17,26 +18,32 @@
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
         android:text="I am a patient"
+        android:fontFamily="@font/proxima_nova_bold"
         app:layout_constraintBottom_toTopOf="@+id/doctor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.952" />
 
+
+
     <Button
+        style="@style/myColoredButton"
         android:id="@+id/doctor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="600px"
+        android:layout_height="90px"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="232dp"
+        android:layout_marginBottom="224dp"
         android:text="I am a doctor"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:background="@drawable/primary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
     <TextView
         android:id="@+id/textView"
@@ -47,22 +54,28 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+
         android:fontFamily="@font/proxima_nova_bold"
         android:text="Welcome to"
         android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.258"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginLeft="44dp"
         android:text="Medic."
         android:textSize="35sp"
         app:fontFamily="@font/proxima_nova_bold"
-        tools:layout_editor_absoluteX="47dp"
-        tools:layout_editor_absoluteY="63dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="55dp" />
 
 </android.support.constraint.ConstraintLayout>
