@@ -1,5 +1,6 @@
 package com.example.praneethguduguntla.medic;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private static final String TAG = "LoginAct";
+    private View view;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,8 @@ public class LoginActivity extends AppCompatActivity {
                 String email = ((EditText) findViewById(R.id.emailDocSignup)).getText().toString();
                 String password = ((EditText) findViewById(R.id.password)).getText().toString();
 
+                LoginActivity.this.view = view;
+
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -45,6 +49,9 @@ public class LoginActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             Toast.makeText(LoginActivity.this, "Authentication success.",
                                     Toast.LENGTH_SHORT).show();
+
+                            Intent i = new Intent(LoginActivity.this, PatientSchedulingActivity.class);
+                            startActivityForResult(i, 0);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
