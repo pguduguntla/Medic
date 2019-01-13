@@ -16,6 +16,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,6 +64,7 @@ public class DoctorSignUpActivity extends AppCompatActivity {
                             userData.put("name", DoctorSignUpActivity.this.name);
                             userData.put("email", user.getEmail());
                             userData.put("code", DoctorSignUpActivity.this.generateCode(user));
+                            userData.put("patients", new ArrayList<String>());
 
                             db.collection("Doctors").document(user.getUid()).set(userData);
 
