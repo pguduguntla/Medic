@@ -15,16 +15,42 @@
         android:hint="Title" />
 
     <EditText
-        android:id="@+id/edit_text_message"
+    android:id="@+id/edit_text_description"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Description" />
+    <EditText
+        android:id="@+id/edit_text_hour"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Message" />
+        android:hint="Hour" />
+    <EditText
+    android:id="@+id/edit_text_minute"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="minute" />
+    <EditText
+        android:id="@+id/edit_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name" />
+    <EditText
+        android:id="@+id/edit_text_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Day" />
 
     <Button
+        android:id="@+id/ThisButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="sendOnChannel1"
         android:text="Send on Channel 1" />
 
+    <Button
+        android:id="@+id/Button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create Medicine" />
 </LinearLayout>
 

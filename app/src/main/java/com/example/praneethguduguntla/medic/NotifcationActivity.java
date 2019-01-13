@@ -15,8 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.core.FirestoreClient;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -31,11 +37,18 @@ public class NotifcationActivity extends AppCompatActivity {
     private NotificationManagerCompat notificationManager;
     private EditText editTextTitle;
     private EditText editTextMessage;
+    private EditText edit_text_minute;
+    private EditText edit_text_hour;
+    private EditText edit_text_day;
+    private EditText edit_text_name;
+    private EditText edit_text_description;
     AlarmManager am;
     Intent intent1;
     PendingIntent pendingIntent;
     List<Integer> pendingIntents;
     static int pIntentCounter = 0;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,10 +57,25 @@ public class NotifcationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_notifcation);
         //App a = new App();
         //a.createNotificationChannels();
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
         notificationManager = NotificationManagerCompat.from(this);
 
-       /*editTextTitle = findViewById(R.id.edit_text_title);
-       editTextMessage = findViewById(R.id.edit_text_message);*/
+        Button b = (Button) findViewById(R.id.Button2);
+
+        b.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                makeNot(view);
+            }
+        });
+
+       editTextTitle = findViewById(R.id.edit_text_title);
+       edit_text_minute = findViewById(R.id.edit_text_minute);
+       edit_text_hour = findViewById(R.id.edit_text_hour);
+       edit_text_day = findViewById(R.id.edit_text_day);
+       edit_text_name = findViewById(R.id.edit_text_name);
+        edit_text_description = findViewById(R.id.edit_text_description);
        /* Calendar calendar = null;
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
@@ -67,21 +95,25 @@ public class NotifcationActivity extends AppCompatActivity {
             am.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 60000, pendingIntent);
 
         }*/
-      /*  Firestore db = FirestoreClient.getFirestore();
-        Map<String, Object> docData = new HashMap<>();
-        docData.put("name", "NYC");
-        docData.put("state", "NY");
-        docData.put("country", "USA");
-        docData.put("regions", Arrays.asList("east_coast", "cold"));
 
-        ApiFuture<DocumentSnapshot> future = db.collection("cities").document("NYC").get();
-        //    String name = future.get("country");
-
-        while (!future.isDone());
-        DocumentSnapshot doc = future.get();
-      */ createNotification(4, 10, 0, 7, "Title", "Description", 60000);
+      //createNotification(4, 10, 0, 7, "Title", "Description", 60000);
     }
 
+    public void makeNot(View v){
+        String Title = editTextTitle.getText().toString();
+        String desc = edit_text_description.getText().toString();
+        String name = edit_text_name.getText().toString();
+        int day = Integer.parseInt(edit_text_day.getText().toString());
+        int hour = Integer.parseInt(edit_text_hour.getText().toString());
+        int minute = Integer.parseInt(edit_text_minute.getText().toString());
+        Map<String, Object> docData = new HashMap<>();
+        docData.put("Times", hour + ":" + minute);
+        docData.put("Name", name);
+        docData.put("Days", day);
+        db.collection("Patients").document("testPatient").collection("Meds").add(docData);
+        createNotification(hour, minute, 0, 7, Title, desc, 60000);
+
+    }
         public void createNotification(int hour_of_day, int minute, int second, int day_of_week, String title, String description, int repeat){
           Calendar calendar = null;
 
