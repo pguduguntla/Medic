@@ -1,11 +1,14 @@
 package com.example.praneethguduguntla.medic;
 
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -39,6 +42,10 @@ public class PatientView extends AppCompatActivity {
     private MedViewAdapter messageAdapter;
     private ListView messagesView;
     private TextView tv;
+    private FloatingActionButton fab1;
+    private FloatingActionButton fab2;
+    private FloatingActionButton fab3;
+    private boolean isFABOpen = false;
 
 
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -46,6 +53,35 @@ public class PatientView extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_patient_view);
+
+        fab1 = (FloatingActionButton) findViewById(R.id.fab1);
+        fab2 = (FloatingActionButton) findViewById(R.id.fab2);
+        fab3 = (FloatingActionButton) findViewById(R.id.fab3);
+        fab1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(!isFABOpen){
+                    showFABMenu();
+                    fab2.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i = new Intent(getApplicationContext(), MessagingActivity.class);
+                            startActivity(i);
+                        }
+                    });
+
+                    fab3.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            Intent i = new Intent(getApplicationContext(), PatientSchedulingActivity.class);
+                            startActivity(i);
+                        }
+                    });
+                }else{
+                    closeFABMenu();
+                }
+            }
+        });
         db = FirebaseFirestore.getInstance();
         mAuth = FirebaseAuth.getInstance();
 
@@ -201,7 +237,7 @@ public class PatientView extends AppCompatActivity {
                         int currMonth = c.get(Calendar.MONTH);
                         int currDay = c.get(Calendar.DAY_OF_MONTH);
 
-                        if (currMonth != Integer.parseInt(month)) {
+                        if (currMonth+1 != Integer.parseInt(month)) {
                             todayListBool.add(false);
                             continue;
                         }
@@ -259,6 +295,19 @@ public class PatientView extends AppCompatActivity {
         });
 
 
+    }
+
+    private void showFABMenu(){
+        isFABOpen=true;
+        fab2.animate().translationY(-getResources().getDimension(R.dimen.standard_105));
+        fab3.animate().translationY(-getResources().getDimension(R.dimen.standard_155));
+
+    }
+
+    private void closeFABMenu(){
+        isFABOpen=false;
+        fab2.animate().translationY(0);
+        fab3.animate().translationY(0);
     }
 
 
