@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.example.praneethguduguntla.medic">
+    package="com.example.praneethguduguntla.medic">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -13,14 +13,14 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".LoginActivity"
-            android:theme="@style/MedicTheme" >
+            android:theme="@style/MedicTheme" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
         <activity android:name=".DoctorSignUpActivity" />
         <activity android:name=".PatientSignUpActivity">
 
@@ -34,7 +34,8 @@
             android:name=".YesOrNo"
             android:label="@string/title_activity_yes_or_no"
             android:theme="@style/AppTheme" />
-        <activity android:name=".MessagingActivity"
+        <activity
+            android:name=".MessagingActivity"
             android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name=".PatientListActivity" />
     </application>

@@ -3,5 +3,7 @@
     <color name="colorPrimary">#4a90e2</color>
     <color name="colorPrimaryDark">#283146</color>
     <color name="colorAccent">#ffffff</color>
-    <color name="thingo">#ffff</color>
+    <color name="yes">#42a354</color>
+    <color name="no">#a34542</color>
+
 </resources>

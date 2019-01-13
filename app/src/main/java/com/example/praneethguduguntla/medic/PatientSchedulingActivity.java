@@ -130,7 +130,7 @@ public class PatientSchedulingActivity extends AppCompatActivity {
 
                             Log.d("Testing", user.getUid() + "");
                             db.collection("Patients").document(user.getUid()).collection("Meds").add(docData);
-                            createNotification(hour, minute, 0, days, Title, desc, (int) (AlarmManager.INTERVAL_DAY*7));
+                            createNotification(hour, minute, 0, days, Title, desc, (int) (AlarmManager.INTERVAL_DAY * 7));
                         }
                     }
                 });

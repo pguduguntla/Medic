@@ -150,7 +150,7 @@
         android:layout_height="130px"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="131dp"
         android:background="@drawable/primary"
         android:fontFamily="@font/proxima_nova_bold"
         android:text="Sign me up."
@@ -158,6 +158,24 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/toLogDoc"
+        style="@style/myColoredButton"
+        android:layout_width="850px"
+        android:layout_height="130px"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="44dp"
+        android:background="@color/colorAccent"
+        android:fontFamily="@font/proxima_nova_bold"
+        android:text="Have an account?"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
     android:orientation="vertical"
     android:padding="16dp"
     tools:context="com.example.praneethguduguntla.medic.NotifcationActivity">
@@ -11,14 +12,16 @@
     <TextView
         android:id="@+id/MedicineText"
         android:layout_width="wrap_content"
-        android:layout_height="200dp"
+        android:layout_height="43dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="47dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="42dp"
-        android:text="Did you take the medicine?"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="202dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/proxima_nova_black"
+        android:text="Did you take"
+        android:textColor="@color/colorPrimary"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/ThisButton"
+        app:layout_constraintBottom_toTopOf="@+id/medicine"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -31,6 +34,8 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
+        android:background="@color/yes"
+        android:fontFamily="@font/proxima_nova_black"
         android:text="Yes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,10 +50,28 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="209dp"
+        android:background="@color/no"
+        android:fontFamily="@font/proxima_nova_black"
         android:text="No"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ThisButton" />
+
+    <TextView
+        android:id="@+id/medicine"
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="132dp"
+        android:fontFamily="@font/proxima_nova_black"
+        android:text="the medicine"
+        android:textColor="@color/colorAccent"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/ThisButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MedicineText" />
 
 </android.support.constraint.ConstraintLayout>

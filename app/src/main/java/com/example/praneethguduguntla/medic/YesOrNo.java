@@ -36,10 +36,10 @@ public class YesOrNo extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_yes_or_no);
+        setContentView(R.layout.content_yes_or_no);
         yes = (Button) findViewById(R.id.ThisButton);
         no = (Button) findViewById(R.id.ThisButton2);
-        currentText = (TextView) findViewById(R.id.MedicineText);
+        currentText = (TextView) findViewById(R.id.medicine);
         db = FirebaseFirestore.getInstance();
 
         //int ind = getIntent().getIntExtra("index", -1);
@@ -57,7 +57,7 @@ public class YesOrNo extends AppCompatActivity {
                         //Math.toIntExact((long)(task.getResult().get("Total")))
                         if (Math.toIntExact((long) doc.get("Index")) == ind) {
                             String name = doc.get("Name").toString();
-                            currentText.setText("Did you take " + name + "?");
+                            currentText.setText(name + "?");
                             break;
                         }
                     }

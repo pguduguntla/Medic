@@ -1,5 +1,6 @@
 package com.example.praneethguduguntla.medic;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class DoctorSignUpActivity extends AppCompatActivity {
     private String password;
     private FirebaseAuth mAuth;
     private FirebaseFirestore db;
+    private Button toLog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,14 @@ public class DoctorSignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
+        toLog = (Button)findViewById(R.id.toLogDoc);
+        toLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
 
         button = (Button) findViewById(R.id.signUpDoc);
         button.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +77,8 @@ public class DoctorSignUpActivity extends AppCompatActivity {
                             userData.put("patients", new ArrayList<String>());
 
                             db.collection("Doctors").document(user.getUid()).set(userData);
+                            Intent i = new Intent(getApplicationContext(), PatientListActivity.class);
+                            startActivity(i);
 
                         } else {
                             // If sign in fails, display a message to the user.

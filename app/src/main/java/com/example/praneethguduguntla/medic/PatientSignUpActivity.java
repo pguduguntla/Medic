@@ -35,6 +35,7 @@ public class PatientSignUpActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private String docUID;
     private boolean authed;
+    private Button toLog;
 
 
     @Override
@@ -44,6 +45,14 @@ public class PatientSignUpActivity extends AppCompatActivity {
 
         authed = false;
 
+        toLog = (Button)findViewById(R.id.toLogPat);
+        toLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(i);
+            }
+        });
 
         db = FirebaseFirestore.getInstance();
         docUID = code;
@@ -62,6 +71,8 @@ public class PatientSignUpActivity extends AppCompatActivity {
 //                check();
             }
         });
+
+
     }
 
     public void createPatient(String email, String password){
